@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gradient definitions -->
+    <defs>
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Shield background -->
+    <path d="M64 8 L104 24 V48 C104 72 88 96 64 120 C40 96 24 72 24 48 V24 L64 8 Z" 
+          fill="url(#shieldGrad)"/>
+    
+    <!-- Shield border -->
+    <path d="M64 8 L104 24 V48 C104 72 88 96 64 120 C40 96 24 72 24 48 V24 L64 8 Z" 
+          fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.3"/>
+    
+    <!-- Lock body -->
+    <rect x="48" y="64" width="32" height="24" rx="4" fill="url(#lockGrad)"/>
+    
+    <!-- Lock shackle -->
+    <path d="M64 48 C64 48 64 64 64 64 M64 48 C64 48 80 48 80 64 M80 64 C80 64 64 64 64 64" 
+          stroke="url(#lockGrad)" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Shield highlight -->
+    <path d="M64 8 L104 24 V48 C104 72 88 96 64 120" 
+          fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.2"/>
+</svg> 

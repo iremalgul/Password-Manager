@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle -->
+    <circle cx="64" cy="64" r="60" fill="#2196F3"/>
+    
+    <!-- Lock body -->
+    <rect x="44" y="52" width="40" height="32" rx="4" fill="white"/>
+    
+    <!-- Lock shackle -->
+    <path d="M64 32 C64 32 64 52 64 52 M64 32 C64 32 84 32 84 52 M84 52 C84 52 64 52 64 52" 
+          stroke="white" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Keyhole -->
+    <circle cx="64" cy="64" r="4" fill="#2196F3"/>
+    <rect x="62" y="64" width="4" height="8" fill="#2196F3"/>
+</svg> 

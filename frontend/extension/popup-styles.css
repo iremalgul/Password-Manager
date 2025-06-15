@@ -1,0 +1,91 @@
+.password-manager-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    min-width: 300px;
+    max-width: 400px;
+    z-index: 1000000;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: slideIn 0.3s ease-out;
+    border-left: 4px solid #4CAF50;
+}
+
+.password-manager-popup.error {
+    border-left-color: #dc3545;
+}
+
+.password-manager-popup.warning {
+    border-left-color: #ffc107;
+}
+
+.password-manager-popup .icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.password-manager-popup .content {
+    flex-grow: 1;
+}
+
+.password-manager-popup .title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #333;
+    font-size: 14px;
+}
+
+.password-manager-popup .message {
+    color: #666;
+    font-size: 13px;
+    margin: 0;
+}
+
+.password-manager-popup .close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.password-manager-popup .close-button:hover {
+    color: #666;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.password-manager-popup.closing {
+    animation: slideOut 0.3s ease-in forwards;
+} 

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Manager</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .main-interface {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .save-password-section {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .passwords-section {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .logout-section {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+        #logout-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        #logout-button:hover {
+            background-color: #c82333;
+        }
+        .divider {
+            height: 1px;
+            background-color: #dee2e6;
+            margin: 10px 0;
+        }
+        .password-list {
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none; /* Hide by default */
+        }
+        .password-list.active {
+            display: block;
+        }
+        .show-passwords-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .show-passwords-button:hover {
+            background-color: #0056b3;
+        }
+        .password-item {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            background-color: #f8f9fa;
+        }
+        .password-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .password-header:hover {
+            background-color: #e9ecef;
+        }
+        .password-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #dee2e6;
+            margin-top: 5px;
+        }
+        .password-content.active {
+            display: block;
+        }
+        .button-group {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+        .copy-button {
+            background-color: #007bff;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+        .edit-button {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .edit-button:hover {
+            background-color: #d39e00;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        .edit-form input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .edit-form button {
+            padding: 5px 10px;
+            margin: 2px;
+        }
+        .edit-form .save-edit {
+            background-color: #28a745;
+        }
+        .edit-form .save-edit:hover {
+            background-color: #218838;
+        }
+        .edit-form .cancel-edit {
+            background-color: #6c757d;
+        }
+        .edit-form .cancel-edit:hover {
+            background-color: #5a6268;
+        }
+        .hidden {
+            display: none;
+        }
+        .link-button {
+            background: none;
+            border: none;
+            color: #4CAF50;
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 0;
+            font: inherit;
+        }
+        .link-button:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="login-form">
+            <h2>Login</h2>
+            <div class="form-group">
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button id="login-button">Login</button>
+            </div>
+            <p>Don't have an account? <button class="link-button" id="show-register-link">Register</button></p>
+        </div>
+
+        <div id="register-form" class="hidden">
+            <h2>Register</h2>
+            <div class="form-group">
+                <input type="text" id="reg-username" placeholder="Username">
+                <input type="email" id="reg-email" placeholder="Email">
+                <input type="password" id="reg-password" placeholder="Password">
+                <button id="register-button">Register</button>
+            </div>
+            <p>Already have an account? <button class="link-button" id="show-login-link">Login</button></p>
+        </div>
+
+        <div id="main-interface" class="hidden">
+            <div class="header">
+                <h2>Password Manager</h2>
+                <div class="user-info">
+                    <span id="username-display"></span>
+                </div>
+            </div>
+            
+            <div class="save-password-section">
+                <h3>Save New Password</h3>
+                <div class="form-group">
+                    <input type="text" id="save-website" placeholder="Website">
+                    <input type="text" id="save-username" placeholder="Username">
+                    <input type="password" id="save-password" placeholder="Password">
+                    <button id="save-password-button">Save Password</button>
+                </div>
+            </div>
+
+            <div class="passwords-section">
+                <h3>Saved Passwords</h3>
+                <button id="show-passwords-button" class="show-passwords-button">Show Passwords</button>
+                <div class="password-list" id="password-list">
+                    <!-- Password items will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="logout-section">
+                <button id="logout-button">Logout</button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 
