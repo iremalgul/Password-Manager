@@ -91,6 +91,9 @@ Once the server is running, visit:
 3. Start adding and managing your passwords
 4. Use the extension to automatically fill passwords on websites
 
+## Example: Web Interface Screenshot
+![Web Interface](./password_manager.png)
+
 ## Contributing
 
 1. Fork the repository
